@@ -19,7 +19,7 @@ def create_vector_db():
     loader = CSVLoader(file_path='codebasics_faqs.csv', source_column="prompt")
     data = loader.load()
 
-    vectordb = FAISS.from_documents(documents=data, embedding=instructor_embeddings, allow_dangerous_deserialization=True)
+    vectordb = FAISS.from_documents(documents=data, embedding=instructor_embeddings)
 
     vectordb.save_local(vectordb_file_path)
 

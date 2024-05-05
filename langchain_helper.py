@@ -26,7 +26,7 @@ def create_vector_db():
 # Function to set up the question-answering chain
 def get_qa_chain():
     # Load the vector database from the local folder with dangerous deserialization enabled
-    vectordb = FAISS.load_local(vectordb_file_path, instructor_embeddings, allow_dangerous_deserialization=True)
+    vectordb = FAISS.load_local(vectordb_file_path, instructor_embeddings)
 
     # Create a retriever for querying the vector database
     retriever = vectordb.as_retriever(score_threshold=0.7)

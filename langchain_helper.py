@@ -19,14 +19,14 @@ def create_vector_db():
     loader = CSVLoader(file_path='codebasics_faqs.csv', source_column="prompt")
     data = loader.load()
 
-    vectordb = FAISS.from_documents(documents=data, embedding=instructor_embeddings, allow_dangerous_deserialization=True)
+    vectordb = FAISS.from_documents(documents=data, embedding=instructor_embeddings,allow_dangerous_deserialization=True)
 
     vectordb.save_local(vectordb_file_path)
 
 # Function to set up the question-answering chain
 def get_qa_chain():
     # Load the vector database from the local folder with dangerous deserialization enabled
-    vectordb = FAISS.load_local(vectordb_file_path, instructor_embeddings, allow_dangerous_deserialization=True)
+    vectordb = FAISS.load_local(vectordb_file_path, instructor_embeddings,allow_dangerous_deserialization=True)
 
     # Create a retriever for querying the vector database
     retriever = vectordb.as_retriever(score_threshold=0.7)

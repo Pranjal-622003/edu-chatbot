@@ -6,9 +6,10 @@ st.title("Prepsat Q&A 🌱")
 
 question = st.text_input("Question: ")
 
-if question:
-    chain = get_qa_chain()
-    response = chain(question)
+if st.button("Get Answer"):
+    if question:
+        chain = get_qa_chain()
+        response = chain(question)
 
-    st.header("Answer")
-    st.write(response["result"])
+        st.header("Answer")
+        st.write(response["result"])
